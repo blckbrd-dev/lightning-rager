@@ -33,4 +33,19 @@ namespace vmonitor {
 		c.y = floor(y / CELL_SIZE) * CELL_SIZE; // integer division
 		return c;
 	}
+
+	// virtuals
+	void VMonitor::on_mouse_down() const {
+		std::cout << "Mouse button pressed." << std::endl;
+		// now, change color of the pixel
+		Color clr;
+		clr.set_rgb(255, 0, 0);
+
+		int x, y;
+		SDL_GetMouseState(&x, &y);
+
+		cell c = find_cell(x, y);
+		set_pixel_sq(c.x, c.y, VMonitor::CELL_SIZE, clr);
+		render();
+	}
 }

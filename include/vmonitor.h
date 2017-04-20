@@ -13,6 +13,7 @@ private:
 	cell find_cell(const int, const int) const;
 public:
 	static const int CELL_SIZE = SCREEN_WIDTH / 100;
+	void on_mouse_down() const override;
 public:
 	VMonitor();
 };
