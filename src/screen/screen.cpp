@@ -97,10 +97,13 @@ namespace vmonitor {
 					render();
 				}
 			}
+<<<<<<< HEAD
 
 			// mouse events
 			if(event.type == SDL_MOUSEBUTTONDOWN) on_mouse_down();
 			// if(event.type == SDL_MOUSEMOTION) on_mouse_move();
+=======
+>>>>>>> 0914a9e98e95838969e1b43a166969e05b2ca102
 		}
 
 		// everything went fine, continue
