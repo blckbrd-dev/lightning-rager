@@ -5,8 +5,7 @@
 
 #include "color.h"
 
-#ifndef SCREEN_H_
-#define SCREEN_H_
+#pragma once
 
 namespace vmonitor {
 class Screen {
@@ -36,4 +35,3 @@ public:
 	bool process_events() const;
 };
 }
-#endif

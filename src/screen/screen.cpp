@@ -8,8 +8,8 @@ using std::endl;
 namespace vmonitor {
 // macros
 // delete and set null
-#define delete(x) { delete x; x = NULL; }
-#define delete_arr(x) { delete [] x; x = NULL; }
+#define del(x) { delete x; x = NULL; }
+#define del_arr(x) { delete [] x; x = NULL; }
 
 	Screen::Screen():
 		m_window(NULL),
@@ -47,17 +47,20 @@ namespace vmonitor {
 		m_renderer = SDL_CreateRenderer(m_window, 
 				-1, 
 				SDL_RENDERER_PRESENTVSYNC);
+
+		// check for errors
+		if(m_renderer == NULL) {
+			print_err_msg("Could not create renderer.");
+			return false;
+		}
+
 		m_texture = SDL_CreateTexture(m_renderer,
 				SDL_PIXELFORMAT_RGBA8888,
 				SDL_TEXTUREACCESS_STATIC,
 				SCREEN_WIDTH,
 				SCREEN_HEIGHT);
 
-		if(m_renderer == NULL) {
-			print_err_msg("Could not create renderer.");
-			return false;
-		}
-
+		// check for errors
 		if(m_texture == NULL) {
 			print_err_msg("Could not create texture.");
 			return false;
@@ -112,7 +115,7 @@ namespace vmonitor {
 
 	void Screen::close() {
 		// dispose
-		delete_arr(m_buffer);
+		del_arr(m_buffer);
 
 		SDL_DestroyRenderer(m_renderer);
 		SDL_DestroyTexture(m_texture);
