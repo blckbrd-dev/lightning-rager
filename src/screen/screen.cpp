@@ -105,11 +105,7 @@ namespace vmonitor {
 				// mouse move
 				// on_mouse_move();
 				on_mouse_drag();
-			} else if(event.type == SDL_WINDOWEVENT) {
-				// window
-				if(event.window.event == SDL_WINDOWEVENT_RESIZED) {
-				}
-			}
+			} 
 		}
 
 		render();
