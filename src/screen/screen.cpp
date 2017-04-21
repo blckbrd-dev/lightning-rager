@@ -11,6 +11,8 @@ namespace vmonitor {
 #define del(x) { delete x; x = NULL; }
 #define del_arr(x) { delete [] x; x = NULL; }
 
+	bool mouse_held = false;
+
 	Screen::Screen():
 		m_window(NULL),
 		m_renderer(NULL),
@@ -86,26 +88,31 @@ namespace vmonitor {
 
 	bool Screen::process_events() const {
 		SDL_Event event;
+
 		// Check for messages & events
 		while(SDL_PollEvent(&event)) {
-
-			if(event.type == SDL_QUIT) return false;
-
-			// window events
-			if(event.type == SDL_WINDOWEVENT) {
+			if(event.type == SDL_QUIT) 
+				return false;
+			else if(event.type == SDL_MOUSEBUTTONUP) {
+				// mouse up
+				mouse_held = false;
+				cout << mouse_held << endl;
+			} else if(event.type == SDL_MOUSEBUTTONDOWN && !mouse_held) {
+				// mouse down
+				mouse_held = true;
+				on_mouse_down();
+			} else if(event.type == SDL_MOUSEMOTION && mouse_held) {
+				// mouse move
+				// on_mouse_move();
+				on_mouse_drag();
+			} else if(event.type == SDL_WINDOWEVENT) {
+				// window
 				if(event.window.event == SDL_WINDOWEVENT_RESIZED) {
-					render();
 				}
 			}
-<<<<<<< HEAD
-
-			// mouse events
-			if(event.type == SDL_MOUSEBUTTONDOWN) on_mouse_down();
-			// if(event.type == SDL_MOUSEMOTION) on_mouse_move();
-=======
->>>>>>> 0914a9e98e95838969e1b43a166969e05b2ca102
 		}
 
+		render();
 		// everything went fine, continue
 		return true;
 	}

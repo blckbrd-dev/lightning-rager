@@ -13,10 +13,9 @@ private:
 	cell find_cell(const int, const int) const;
 public:
 	static const int CELL_SIZE = SCREEN_WIDTH / 100;
-<<<<<<< HEAD
 	void on_mouse_down() const override;
-=======
->>>>>>> 0914a9e98e95838969e1b43a166969e05b2ca102
+	void on_mouse_move() const override;
+	void on_mouse_drag() const override;
 public:
 	VMonitor();
 };

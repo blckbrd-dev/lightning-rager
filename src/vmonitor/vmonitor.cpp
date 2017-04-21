@@ -33,7 +33,6 @@ namespace vmonitor {
 		c.y = floor(y / CELL_SIZE) * CELL_SIZE; // integer division
 		return c;
 	}
-<<<<<<< HEAD
 
 	// virtuals
 	void VMonitor::on_mouse_down() const {
@@ -47,8 +46,21 @@ namespace vmonitor {
 
 		cell c = find_cell(x, y);
 		set_pixel_sq(c.x, c.y, VMonitor::CELL_SIZE, clr);
-		render();
+		// render();
 	}
-=======
->>>>>>> 0914a9e98e95838969e1b43a166969e05b2ca102
+
+	void VMonitor::on_mouse_move() const {
+	}
+
+	void VMonitor::on_mouse_drag() const {
+		Color clr;
+		clr.set_rgb(255, 0, 0);
+
+		int x, y;
+		SDL_GetMouseState(&x, &y);
+
+		cell c = find_cell(x, y);
+		set_pixel_sq(c.x, c.y, VMonitor::CELL_SIZE, clr);
+		// render();
+	}	
 }
