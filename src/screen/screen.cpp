@@ -11,13 +11,12 @@ namespace vmonitor {
 #define del(x) { delete x; x = NULL; }
 #define del_arr(x) { delete [] x; x = NULL; }
 
-	bool mouse_held = false;
-
 	Screen::Screen():
 		m_window(NULL),
 		m_renderer(NULL),
 		m_texture(NULL),
-		m_buffer(NULL) {
+		m_buffer(NULL),
+		m_drawing(false)	{
 			// constructor body
 			if(!init())
 				close();
@@ -91,24 +90,23 @@ namespace vmonitor {
 
 		// Check for messages & events
 		while(SDL_PollEvent(&event)) {
-			if(event.type == SDL_QUIT) 
-				return false;
-			else if(event.type == SDL_MOUSEBUTTONUP) {
+			if(event.type == SDL_MOUSEBUTTONUP) {
 				// mouse up
-				mouse_held = false;
-				cout << mouse_held << endl;
-			} else if(event.type == SDL_MOUSEBUTTONDOWN && !mouse_held) {
+				m_drawing = false;
+				cout << m_drawing << endl;
+			} else if(event.type == SDL_MOUSEBUTTONDOWN && !m_drawing) {
 				// mouse down
-				mouse_held = true;
+				m_drawing = true;
 				on_mouse_down();
-			} else if(event.type == SDL_MOUSEMOTION && mouse_held) {
-				// mouse move
-				// on_mouse_move();
+			} else if(event.type == SDL_MOUSEBUTTONUP) {
+				on_mouse_up();		
+			}else if(event.type == SDL_MOUSEMOTION && m_drawing) {
 				on_mouse_drag();
-			} 
+			} else if(event.type == SDL_QUIT) return false;
 		}
 
 		render();
+
 		// everything went fine, continue
 		return true;
 	}
@@ -147,7 +145,6 @@ namespace vmonitor {
 			const int y, 
 			const Color color) const {
 		m_buffer[(y * SCREEN_WIDTH) + x] = color.get_rgb();
-		render();
 	}
 
 	void Screen::set_pixel_sq(const int x, 
@@ -159,7 +156,6 @@ namespace vmonitor {
 				m_buffer[(h * SCREEN_WIDTH) + w] = color.get_rgb();
 			}
 		}
-		// render();
 	}
 
 }

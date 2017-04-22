@@ -30,6 +30,7 @@ flags = [
     '-isystem', '/usr/local/include',
     '-isystem', '/usr/local/include/eigen3',
     '-isystem', '/usr/local/include/SDL2',
+    '-isystem', '/usr/local/include/lua5.1',
     '-isystem', '/usr/local/lib',
     '-I', 'include',
     '-I.',

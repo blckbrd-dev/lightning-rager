@@ -23,6 +23,8 @@ private:
 	// errors
 	void print_err_msg(std::string) const;
 protected:
+	mutable bool m_drawing;
+protected:
 	void render() const;
 	// colors a square of pixels starting at x
 	// having diagonal of d squared
@@ -32,9 +34,10 @@ protected:
 			const Color color) const;
 
 	// virtuals
-	virtual void on_mouse_down() const = 0;
-	virtual void on_mouse_move() const = 0;
-	virtual void on_mouse_drag() const = 0;
+	virtual void on_mouse_down()	const	= 0;
+	virtual void on_mouse_up()		const = 0;
+	virtual void on_mouse_move()	const	= 0;
+	virtual void on_mouse_drag()	const	= 0;
 public:
 	const static int SCREEN_WIDTH = 600;
 	const static int SCREEN_HEIGHT = 600;
