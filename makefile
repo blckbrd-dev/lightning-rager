@@ -7,10 +7,11 @@ rwildcard=$(wildcard $1$2) \
 CC:=g++
 CFLAGS:=-std=c++11 -c -Wall -I/usr/local/include/SDL2 \
 	-I/usr/local/lib \
-	-Iinclude
+	-Iinclude \
+	-llua
 LFLAGS:=-I/usr/local/include/SDL2 \
 	-I/usr/local/lib \
-	-lSDL2
+	-lSDL2 
 EXECUTABLE:=main
 SOURCES:=$(call rwildcard,src/,*.cpp)
 OBJECTS:=$(SOURCES:.cpp=.o)
