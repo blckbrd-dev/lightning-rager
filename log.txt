@@ -1,0 +1,105 @@
+==4841== Memcheck, a memory error detector
+==4841== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==4841== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==4841== Command: ./bin/main
+==4841== 
+==4841== Syscall param ioctl(generic) points to uninitialised byte(s)
+==4841==    at 0x5A3A357: ioctl (syscall-template.S:84)
+==4841==    by 0xB3420F7: drmIoctl (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==4841==    by 0xB344DEE: drmCommandWriteRead (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==4841==    by 0xC282A88: ??? (in /usr/lib/x86_64-linux-gnu/libdrm_nouveau.so.2.0.0)
+==4841==    by 0xC28351A: nouveau_device_new (in /usr/lib/x86_64-linux-gnu/libdrm_nouveau.so.2.0.0)
+==4841==    by 0xB9A0830: nouveau_drm_screen_create (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==4841==    by 0xB5B1235: ??? (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==4841==    by 0xB871F9B: ??? (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==4841==    by 0xB86DC5E: ??? (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==4841==    by 0x9C8AA96: ??? (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==4841==    by 0x9C5D5D0: ??? (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==4841==    by 0x9C5988A: ??? (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==4841==  Address 0x8b8cb12 is 2 bytes inside a block of size 72 alloc'd
+==4841==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4841==    by 0xC282A33: ??? (in /usr/lib/x86_64-linux-gnu/libdrm_nouveau.so.2.0.0)
+==4841==    by 0xC28351A: nouveau_device_new (in /usr/lib/x86_64-linux-gnu/libdrm_nouveau.so.2.0.0)
+==4841==    by 0xB9A0830: nouveau_drm_screen_create (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==4841==    by 0xB5B1235: ??? (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==4841==    by 0xB871F9B: ??? (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==4841==    by 0xB86DC5E: ??? (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==4841==    by 0x9C8AA96: ??? (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==4841==    by 0x9C5D5D0: ??? (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==4841==    by 0x9C5988A: ??? (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==4841==    by 0x9C59CC1: glXQueryExtensionsString (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==4841==    by 0x5155AAE: X11_GL_InitExtensions (SDL_x11opengl.c:330)
+==4841==    by 0x5155AAE: X11_GL_LoadLibrary (SDL_x11opengl.c:225)
+==4841== 
+==4841== Syscall param ioctl(generic) points to uninitialised byte(s)
+==4841==    at 0x5A3A357: ioctl (syscall-template.S:84)
+==4841==    by 0xB3420F7: drmIoctl (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==4841==    by 0xB344DEE: drmCommandWriteRead (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==4841==    by 0xC282DA0: nouveau_object_mthd (in /usr/lib/x86_64-linux-gnu/libdrm_nouveau.so.2.0.0)
+==4841==    by 0xC283535: nouveau_device_new (in /usr/lib/x86_64-linux-gnu/libdrm_nouveau.so.2.0.0)
+==4841==    by 0xB9A0830: nouveau_drm_screen_create (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==4841==    by 0xB5B1235: ??? (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==4841==    by 0xB871F9B: ??? (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==4841==    by 0xB86DC5E: ??? (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==4841==    by 0x9C8AA96: ??? (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==4841==    by 0x9C5D5D0: ??? (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==4841==    by 0x9C5988A: ??? (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==4841==  Address 0x8b8cba2 is 2 bytes inside a block of size 136 alloc'd
+==4841==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4841==    by 0xC282D65: nouveau_object_mthd (in /usr/lib/x86_64-linux-gnu/libdrm_nouveau.so.2.0.0)
+==4841==    by 0xC283535: nouveau_device_new (in /usr/lib/x86_64-linux-gnu/libdrm_nouveau.so.2.0.0)
+==4841==    by 0xB9A0830: nouveau_drm_screen_create (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==4841==    by 0xB5B1235: ??? (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==4841==    by 0xB871F9B: ??? (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==4841==    by 0xB86DC5E: ??? (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==4841==    by 0x9C8AA96: ??? (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==4841==    by 0x9C5D5D0: ??? (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==4841==    by 0x9C5988A: ??? (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==4841==    by 0x9C59CC1: glXQueryExtensionsString (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==4841==    by 0x5155AAE: X11_GL_InitExtensions (SDL_x11opengl.c:330)
+==4841==    by 0x5155AAE: X11_GL_LoadLibrary (SDL_x11opengl.c:225)
+==4841== 
+==4841== Syscall param writev(vector[...]) points to uninitialised byte(s)
+==4841==    at 0x5A3A3F0: __writev_nocancel (syscall-template.S:84)
+==4841==    by 0x6D7CF28: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==4841==    by 0x6D7D31C: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==4841==    by 0x6D7D3A4: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==4841==    by 0x6A764AD: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==4841==    by 0x6A769A1: _XReply (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==4841==    by 0x6A6159E: XInternAtom (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==4841==    by 0x51592C6: SetWindowBordered (SDL_x11window.c:337)
+==4841==    by 0x51592C6: X11_CreateWindow (SDL_x11window.c:509)
+==4841==    by 0x5144A4B: SDL_CreateWindow_REAL (SDL_video.c:1442)
+==4841==    by 0x5144629: ShouldUseTextureFramebuffer (SDL_video.c:210)
+==4841==    by 0x5144629: SDL_VideoInit_REAL (SDL_video.c:529)
+==4841==    by 0x5084426: SDL_InitSubSystem_REAL (SDL.c:173)
+==4841==    by 0x5084426: SDL_Init_REAL (SDL.c:244)
+==4841==    by 0x402805: vmonitor::Screen::init() (screen.cpp:27)
+==4841==  Address 0x66c3003 is 35 bytes inside a block of size 16,384 alloc'd
+==4841==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4841==    by 0x6A66692: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==4841==    by 0x51573EE: X11_CreateDevice (SDL_x11video.c:192)
+==4841==    by 0x51445E0: SDL_VideoInit_REAL (SDL_video.c:490)
+==4841==    by 0x5084426: SDL_InitSubSystem_REAL (SDL.c:173)
+==4841==    by 0x5084426: SDL_Init_REAL (SDL.c:244)
+==4841==    by 0x402805: vmonitor::Screen::init() (screen.cpp:27)
+==4841==    by 0x4027C9: vmonitor::Screen::Screen() (screen.cpp:21)
+==4841==    by 0x40331F: vmonitor::VMonitor::VMonitor() (vmonitor.cpp:9)
+==4841==    by 0x4026D8: main (main.cpp:16)
+==4841== 
+==4841== 
+==4841== HEAP SUMMARY:
+==4841==     in use at exit: 3,744,984 bytes in 8,700 blocks
+==4841==   total heap usage: 120,926 allocs, 112,226 frees, 84,080,793 bytes allocated
+==4841== 
+==4841== LEAK SUMMARY:
+==4841==    definitely lost: 1,441,072 bytes in 4 blocks
+==4841==    indirectly lost: 5,813 bytes in 89 blocks
+==4841==      possibly lost: 359,398 bytes in 3,528 blocks
+==4841==    still reachable: 1,938,701 bytes in 5,079 blocks
+==4841==         suppressed: 0 bytes in 0 blocks
+==4841== Rerun with --leak-check=full to see details of leaked memory
+==4841== 
+==4841== For counts of detected and suppressed errors, rerun with: -v
+==4841== Use --track-origins=yes to see where uninitialised values come from
+==4841== ERROR SUMMARY: 13 errors from 3 contexts (suppressed: 0 from 0)

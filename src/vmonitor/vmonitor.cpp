@@ -3,10 +3,15 @@
 #include <cmath>
 
 #include "vmonitor.h"
+#include "paths.h"
 
 namespace vmonitor {
-	VMonitor::VMonitor() {
-
+	VMonitor::VMonitor(): m_lua_state(new sel::State()) {
+		// testing, will have a ui events that
+		// load different scripts 
+		std::string script_path(full_path);
+		script_path += "/test.lua";
+		m_lua_state->Load(script_path.c_str());
 	}
 
 	cell VMonitor::find_cell(const int x, const int y) const {
@@ -14,6 +19,11 @@ namespace vmonitor {
 		c.x = (x / CELL_SIZE) * CELL_SIZE; // integer division
 		c.y = (y / CELL_SIZE) * CELL_SIZE; // integer division
 		return c;
+	}
+
+	VMonitor::~VMonitor() {
+		std::cout << "Destroyed VMonitor object. " << std::endl;
+		delete m_lua_state;
 	}
 
 	/* **************
@@ -55,9 +65,11 @@ namespace vmonitor {
 
 		cell c = find_cell(x, y);
 		set_pixel_sq(c.x, c.y, VMonitor::CELL_SIZE, clr);
-		std::cout << "drawing? " << m_drawing << std::endl;
 
 		// while mouse is being dragged
 		// we want to draw shapes here...
+		// check for function
+		std::string fn_log = (*m_lua_state)["draw"]();
+		std::cout << "From LUA: " << fn_log << std::endl;
 	}	
 }

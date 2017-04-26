@@ -4,13 +4,14 @@
 rwildcard=$(wildcard $1$2) \
 					$(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))
 
-CC:=g++
-CFLAGS:=-std=c++11 -c -Wall -I/usr/local/include/SDL2 \
+CC:=ccache g++
+CFLAGS:=-std=c++11 -c -g -Wall -I/usr/local/include/SDL2 \
 	-I/usr/local/lib \
 	-Iinclude \
-	-llua
-LFLAGS:=-I/usr/local/include/SDL2 \
+	-llua5.3
+LFLAGS:=-g -I/usr/local/include/SDL2 \
 	-I/usr/local/lib \
+	-llua5.3 \
 	-lSDL2 
 EXECUTABLE:=main
 SOURCES:=$(call rwildcard,src/,*.cpp)
@@ -28,9 +29,13 @@ $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(CFLAGS) $< -o build/$(notdir $@)
 
 clean:
-	@echo "Clearing up..."
+	@echo "Clearing build files, and executables..."
 	@rm -rf build/*.o
 	@rm -rf bin/$(EXECUTABLE)
+	@echo "Cleared."
+	@echo "Clearing ccache..."
+	@ccache -C
+	@echo "All clean!"
 
 run:
 	@./bin/$(EXECUTABLE)
