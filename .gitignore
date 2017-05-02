@@ -1,6 +1,5 @@
 # folders
 build/
-bin/
 *.swp
 
 # Compiled Object files
