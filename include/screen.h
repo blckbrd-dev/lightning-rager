@@ -14,9 +14,6 @@ private:
 	SDL_Texture* m_texture;
 	Uint32* m_buffer;
 private:
-	bool init();
-	void close();
-
 	// graphics
 	void set_pixel(const int x, const int y, const Color color) const;
 
@@ -25,6 +22,10 @@ private:
 protected:
 	mutable bool m_drawing;
 protected:
+
+	bool init(int, int);
+	void close();
+
 	void render() const;
 	// colors a square of pixels starting at x
 	// having diagonal of d squared
@@ -39,8 +40,8 @@ protected:
 	virtual void on_mouse_move()	const	= 0;
 	virtual void on_mouse_drag()	const	= 0;
 public:
-	const static int SCREEN_WIDTH = 600;
-	const static int SCREEN_HEIGHT = 600;
+	int SCREEN_WIDTH;
+	int SCREEN_HEIGHT;
 public:
 	Screen();
 	bool process_events() const;

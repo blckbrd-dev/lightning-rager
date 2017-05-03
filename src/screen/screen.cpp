@@ -17,12 +17,12 @@ namespace vmonitor {
 		m_texture(NULL),
 		m_buffer(NULL),
 		m_drawing(false)	{
-			// constructor body
-			if(!init())
-				close();
 		}
 
-	bool Screen::init() {
+	bool Screen::init(const int w, const int h) {
+		SCREEN_WIDTH = w;
+		SCREEN_HEIGHT = h;
+
 		// SDL init
 		if(SDL_Init(SDL_INIT_VIDEO) < 0) {
 			print_err_msg("SDL init failed.");

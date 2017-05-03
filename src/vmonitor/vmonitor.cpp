@@ -4,20 +4,39 @@
 
 #include "vmonitor.h"
 #include "paths.h"
+#include "luabind.h"
 
 namespace vmonitor {
 	VMonitor::VMonitor(): m_lua_state(new sel::State()) {
+		// manage LUA state
+		lbind::LuaState lstate;
+		lbind::LuaStackProtect _lstate(&lstate);
+
 		// testing, will have a ui events that
 		// load different scripts 
 		std::string script_path(full_path);
-		script_path += "/test.lua";
-		m_lua_state->Load(script_path.c_str());
+		script_path += "/lua/config.lua";
+		// m_lua_state->Load(script_path.c_str());
+
+	
+		// load configuration file	
+		int _w = 800;
+		int _h = 600;
+
+		lstate.load_config(script_path.c_str(), 
+				&_w, 
+				&_h,
+				&cell_size); 	
+
+		if(!init(_w, _h))
+			close();
+
 	}
 
 	cell VMonitor::find_cell(const int x, const int y) const {
 		cell c;
-		c.x = (x / CELL_SIZE) * CELL_SIZE; // integer division
-		c.y = (y / CELL_SIZE) * CELL_SIZE; // integer division
+		c.x = (x / cell_size) * cell_size; // integer division
+		c.y = (y / cell_size) * cell_size; // integer division
 		return c;
 	}
 
@@ -42,7 +61,7 @@ namespace vmonitor {
 		// SDL_GetMouseState(&x, &y);
 
 		// cell c = find_cell(x, y);
-		// set_pixel_sq(c.x, c.y, VMonitor::CELL_SIZE, clr);
+		// set_pixel_sq(c.x, c.y, VMonitor::cell_size, clr);
 		// 
 		// initialize drawing
 		m_drawing = true;
@@ -64,12 +83,12 @@ namespace vmonitor {
 		SDL_GetMouseState(&x, &y);
 
 		cell c = find_cell(x, y);
-		set_pixel_sq(c.x, c.y, VMonitor::CELL_SIZE, clr);
+		set_pixel_sq(c.x, c.y, cell_size, clr);
 
 		// while mouse is being dragged
 		// we want to draw shapes here...
 		// check for function
-		std::string fn_log = (*m_lua_state)["draw"]();
-		std::cout << "From LUA: " << fn_log << std::endl;
+		// std::string fn_log = (*m_lua_state)["draw"]();
+		// std::cout << "From LUA: " << fn_log << std::endl;
 	}	
 }
