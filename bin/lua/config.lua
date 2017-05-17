@@ -3,6 +3,6 @@
 -- WARNING: BE CAREFUL WHEN EDITING!
 
 -- Window dimensions
-width = 800
+width = "800"
 height = 600
-cellSize = width / 20
+cellSize = width / 80

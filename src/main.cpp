@@ -15,15 +15,12 @@ int main() {
 	// const vmonitor::Screen screen;
 	const vmonitor::VMonitor vm;
 
-	bool keep_running = true;
+	bool keep_running = vm.init();
 	while(keep_running) {
 		// events, watch for quit event
 		keep_running = vm.process_events();
 	}
 
-	dealocate();
+	vm.close();
 	return 0;
-}
-
-void dealocate() {
 }

@@ -13,7 +13,6 @@ namespace lbind {
 // Lua state wraper
 class LuaState {
 private:
-	lua_State* const L;
 private:
 	void error() const {
 		std::cerr << "LUA: Error!" << std::endl;
@@ -23,6 +22,8 @@ private:
 		lua_settop(L, 0);
 	}
 public:
+	lua_State* const L; // public for testing only
+
 	LuaState(): L(luaL_newstate()) {
 		if(!L) { throw std::runtime_error(":P"); }
 	}
@@ -62,6 +63,7 @@ public:
 
 		clear_stack();
 	}
+
 };
 
 // RAII - ensures invariant that Lua stack size on destruction

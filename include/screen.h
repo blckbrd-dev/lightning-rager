@@ -12,7 +12,7 @@ private:
 	SDL_Window* m_window;
 	SDL_Renderer* m_renderer;
 	SDL_Texture* m_texture;
-	Uint32* m_buffer;
+	mutable Uint32* m_buffer;
 private:
 	// graphics
 	void set_pixel(const int x, const int y, const Color color) const;
@@ -21,10 +21,10 @@ private:
 	void print_err_msg(std::string) const;
 protected:
 	mutable bool m_drawing;
+	bool init_fail;
 protected:
 
-	bool init(int, int);
-	void close();
+	bool _init(int, int);
 
 	void render() const;
 	// colors a square of pixels starting at x
@@ -45,5 +45,6 @@ public:
 public:
 	Screen();
 	bool process_events() const;
+	void close() const;
 };
 }

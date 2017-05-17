@@ -1,0 +1,178 @@
+==5029== Memcheck, a memory error detector
+==5029== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==5029== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==5029== Command: ./bin/main
+==5029== 
+==5029== Syscall param ioctl(generic) points to uninitialised byte(s)
+==5029==    at 0x5A3A357: ioctl (syscall-template.S:84)
+==5029==    by 0xB3420F7: drmIoctl (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==5029==    by 0xB344DEE: drmCommandWriteRead (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==5029==    by 0xC282A88: ??? (in /usr/lib/x86_64-linux-gnu/libdrm_nouveau.so.2.0.0)
+==5029==    by 0xC28351A: nouveau_device_new (in /usr/lib/x86_64-linux-gnu/libdrm_nouveau.so.2.0.0)
+==5029==    by 0xB9A0830: nouveau_drm_screen_create (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==5029==    by 0xB5B1235: ??? (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==5029==    by 0xB871F9B: ??? (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==5029==    by 0xB86DC5E: ??? (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==5029==    by 0x9C8AA96: ??? (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==5029==    by 0x9C5D5D0: ??? (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==5029==    by 0x9C5988A: ??? (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==5029==  Address 0x8b8f5a2 is 2 bytes inside a block of size 72 alloc'd
+==5029==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5029==    by 0xC282A33: ??? (in /usr/lib/x86_64-linux-gnu/libdrm_nouveau.so.2.0.0)
+==5029==    by 0xC28351A: nouveau_device_new (in /usr/lib/x86_64-linux-gnu/libdrm_nouveau.so.2.0.0)
+==5029==    by 0xB9A0830: nouveau_drm_screen_create (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==5029==    by 0xB5B1235: ??? (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==5029==    by 0xB871F9B: ??? (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==5029==    by 0xB86DC5E: ??? (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==5029==    by 0x9C8AA96: ??? (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==5029==    by 0x9C5D5D0: ??? (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==5029==    by 0x9C5988A: ??? (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==5029==    by 0x9C59CC1: glXQueryExtensionsString (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==5029==    by 0x5155AAE: X11_GL_InitExtensions (SDL_x11opengl.c:330)
+==5029==    by 0x5155AAE: X11_GL_LoadLibrary (SDL_x11opengl.c:225)
+==5029== 
+==5029== Syscall param ioctl(generic) points to uninitialised byte(s)
+==5029==    at 0x5A3A357: ioctl (syscall-template.S:84)
+==5029==    by 0xB3420F7: drmIoctl (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==5029==    by 0xB344DEE: drmCommandWriteRead (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==5029==    by 0xC282DA0: nouveau_object_mthd (in /usr/lib/x86_64-linux-gnu/libdrm_nouveau.so.2.0.0)
+==5029==    by 0xC283535: nouveau_device_new (in /usr/lib/x86_64-linux-gnu/libdrm_nouveau.so.2.0.0)
+==5029==    by 0xB9A0830: nouveau_drm_screen_create (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==5029==    by 0xB5B1235: ??? (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==5029==    by 0xB871F9B: ??? (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==5029==    by 0xB86DC5E: ??? (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==5029==    by 0x9C8AA96: ??? (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==5029==    by 0x9C5D5D0: ??? (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==5029==    by 0x9C5988A: ??? (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==5029==  Address 0x8b8f632 is 2 bytes inside a block of size 136 alloc'd
+==5029==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5029==    by 0xC282D65: nouveau_object_mthd (in /usr/lib/x86_64-linux-gnu/libdrm_nouveau.so.2.0.0)
+==5029==    by 0xC283535: nouveau_device_new (in /usr/lib/x86_64-linux-gnu/libdrm_nouveau.so.2.0.0)
+==5029==    by 0xB9A0830: nouveau_drm_screen_create (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==5029==    by 0xB5B1235: ??? (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==5029==    by 0xB871F9B: ??? (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==5029==    by 0xB86DC5E: ??? (in /usr/lib/x86_64-linux-gnu/dri/nouveau_dri.so)
+==5029==    by 0x9C8AA96: ??? (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==5029==    by 0x9C5D5D0: ??? (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==5029==    by 0x9C5988A: ??? (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==5029==    by 0x9C59CC1: glXQueryExtensionsString (in /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1.2.0)
+==5029==    by 0x5155AAE: X11_GL_InitExtensions (SDL_x11opengl.c:330)
+==5029==    by 0x5155AAE: X11_GL_LoadLibrary (SDL_x11opengl.c:225)
+==5029== 
+==5029== Syscall param writev(vector[...]) points to uninitialised byte(s)
+==5029==    at 0x5A3A3F0: __writev_nocancel (syscall-template.S:84)
+==5029==    by 0x6D7CF28: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==5029==    by 0x6D7D31C: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==5029==    by 0x6D7D3A4: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==5029==    by 0x6A764AD: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==5029==    by 0x6A769A1: _XReply (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==5029==    by 0x6A6159E: XInternAtom (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==5029==    by 0x51592C6: SetWindowBordered (SDL_x11window.c:337)
+==5029==    by 0x51592C6: X11_CreateWindow (SDL_x11window.c:509)
+==5029==    by 0x5144A4B: SDL_CreateWindow_REAL (SDL_video.c:1442)
+==5029==    by 0x5144629: ShouldUseTextureFramebuffer (SDL_video.c:210)
+==5029==    by 0x5144629: SDL_VideoInit_REAL (SDL_video.c:529)
+==5029==    by 0x5084426: SDL_InitSubSystem_REAL (SDL.c:173)
+==5029==    by 0x5084426: SDL_Init_REAL (SDL.c:244)
+==5029==    by 0x4020B1: vmonitor::Screen::_init(int, int) (screen.cpp:29)
+==5029==  Address 0x66ca223 is 35 bytes inside a block of size 16,384 alloc'd
+==5029==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5029==    by 0x6A66692: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==5029==    by 0x51573EE: X11_CreateDevice (SDL_x11video.c:192)
+==5029==    by 0x51445E0: SDL_VideoInit_REAL (SDL_video.c:490)
+==5029==    by 0x5084426: SDL_InitSubSystem_REAL (SDL.c:173)
+==5029==    by 0x5084426: SDL_Init_REAL (SDL.c:244)
+==5029==    by 0x4020B1: vmonitor::Screen::_init(int, int) (screen.cpp:29)
+==5029==    by 0x402BFC: vmonitor::VMonitor::VMonitor() (vmonitor.cpp:31)
+==5029==    by 0x401F49: main (main.cpp:16)
+==5029== 
+0
+==5029== Invalid read of size 8
+==5029==    at 0x50D2690: SDL_DestroyTexture_REAL (SDL_render.c:1890)
+==5029==    by 0x40266C: vmonitor::Screen::close() const (screen.cpp:131)
+==5029==    by 0x401F7B: main (main.cpp:24)
+==5029==  Address 0x11364d20 is 0 bytes inside a block of size 120 free'd
+==5029==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5029==    by 0x50D3D4D: SDL_DestroyTexture_REAL (SDL_render.c:1917)
+==5029==    by 0x50D3D4D: SDL_DestroyRenderer_REAL (SDL_render.c:1929)
+==5029==    by 0x40265C: vmonitor::Screen::close() const (screen.cpp:130)
+==5029==    by 0x401F7B: main (main.cpp:24)
+==5029==  Block was alloc'd at
+==5029==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5029==    by 0x50D35BB: SDL_CreateTexture_REAL (SDL_render.c:436)
+==5029==    by 0x40225E: vmonitor::Screen::_init(int, int) (screen.cpp:60)
+==5029==    by 0x402BFC: vmonitor::VMonitor::VMonitor() (vmonitor.cpp:31)
+==5029==    by 0x401F49: main (main.cpp:16)
+==5029== 
+Destroyed VMonitor object. 
+==5029== 
+==5029== HEAP SUMMARY:
+==5029==     in use at exit: 228,440 bytes in 1,371 blocks
+==5029==   total heap usage: 120,062 allocs, 118,691 frees, 66,727,031 bytes allocated
+==5029== 
+==5029== 1 bytes in 1 blocks are definitely lost in loss record 1 of 867
+==5029==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5029==    by 0x6A92C17: _XlcDefaultMapModifiers (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==5029==    by 0x6A92FE5: XSetLocaleModifiers (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==5029==    by 0x51580D3: X11_VideoInit (SDL_x11video.c:431)
+==5029==    by 0x51443A7: SDL_VideoInit_REAL (SDL_video.c:517)
+==5029==    by 0x5084426: SDL_InitSubSystem_REAL (SDL.c:173)
+==5029==    by 0x5084426: SDL_Init_REAL (SDL.c:244)
+==5029==    by 0x4020B1: vmonitor::Screen::_init(int, int) (screen.cpp:29)
+==5029==    by 0x402BFC: vmonitor::VMonitor::VMonitor() (vmonitor.cpp:31)
+==5029==    by 0x401F49: main (main.cpp:16)
+==5029== 
+==5029== 72 bytes in 1 blocks are definitely lost in loss record 807 of 867
+==5029==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5029==    by 0x6AC68A0: XkbGetMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==5029==    by 0x5150B75: X11_InitKeyboard (SDL_x11keyboard.c:273)
+==5029==    by 0x5157F25: X11_VideoInit (SDL_x11video.c:495)
+==5029==    by 0x51443A7: SDL_VideoInit_REAL (SDL_video.c:517)
+==5029==    by 0x5084426: SDL_InitSubSystem_REAL (SDL.c:173)
+==5029==    by 0x5084426: SDL_Init_REAL (SDL.c:244)
+==5029==    by 0x4020B1: vmonitor::Screen::_init(int, int) (screen.cpp:29)
+==5029==    by 0x402BFC: vmonitor::VMonitor::VMonitor() (vmonitor.cpp:31)
+==5029==    by 0x401F49: main (main.cpp:16)
+==5029== 
+==5029== 192 (16 direct, 176 indirect) bytes in 1 blocks are definitely lost in loss record 825 of 867
+==5029==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5029==    by 0x6A891FC: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==5029==    by 0x6A89770: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==5029==    by 0x6A8B04E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==5029==    by 0x6A8B87B: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==5029==    by 0x6AA865F: _XlcDefaultLoader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==5029==    by 0x6A92E4D: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==5029==    by 0x6A92F87: _XlcCurrentLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==5029==    by 0x6A92FBD: XSetLocaleModifiers (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==5029==    by 0x5157FAB: X11_VideoInit (SDL_x11video.c:397)
+==5029==    by 0x51443A7: SDL_VideoInit_REAL (SDL_video.c:517)
+==5029==    by 0x5084426: SDL_InitSubSystem_REAL (SDL.c:173)
+==5029==    by 0x5084426: SDL_Init_REAL (SDL.c:244)
+==5029== 
+==5029== 1,688 (136 direct, 1,552 indirect) bytes in 1 blocks are definitely lost in loss record 852 of 867
+==5029==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5029==    by 0x6A891FC: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==5029==    by 0x6A89770: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==5029==    by 0x6A8B04E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==5029==    by 0x6A8B87B: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==5029==    by 0x6AAC68F: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==5029==    by 0x6A92E4D: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==5029==    by 0x6A92F87: _XlcCurrentLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==5029==    by 0x6A92FBD: XSetLocaleModifiers (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==5029==    by 0x51580D3: X11_VideoInit (SDL_x11video.c:431)
+==5029==    by 0x51443A7: SDL_VideoInit_REAL (SDL_video.c:517)
+==5029==    by 0x5084426: SDL_InitSubSystem_REAL (SDL.c:173)
+==5029==    by 0x5084426: SDL_Init_REAL (SDL.c:244)
+==5029== 
+==5029== LEAK SUMMARY:
+==5029==    definitely lost: 225 bytes in 4 blocks
+==5029==    indirectly lost: 1,728 bytes in 38 blocks
+==5029==      possibly lost: 0 bytes in 0 blocks
+==5029==    still reachable: 226,487 bytes in 1,329 blocks
+==5029==         suppressed: 0 bytes in 0 blocks
+==5029== Reachable blocks (those to which a pointer was found) are not shown.
+==5029== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==5029== 
+==5029== For counts of detected and suppressed errors, rerun with: -v
+==5029== Use --track-origins=yes to see where uninitialised values come from
+==5029== ERROR SUMMARY: 18 errors from 8 contexts (suppressed: 0 from 0)

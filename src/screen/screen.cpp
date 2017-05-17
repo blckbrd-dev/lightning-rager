@@ -11,15 +11,17 @@ namespace vmonitor {
 #define del(x) { delete x; x = NULL; }
 #define del_arr(x) { delete [] x; x = NULL; }
 
+
 	Screen::Screen():
 		m_window(NULL),
 		m_renderer(NULL),
 		m_texture(NULL),
 		m_buffer(NULL),
-		m_drawing(false)	{
+		m_drawing(false),
+		init_fail(false) {	
 		}
 
-	bool Screen::init(const int w, const int h) {
+	bool Screen::_init(const int w, const int h) {
 		SCREEN_WIDTH = w;
 		SCREEN_HEIGHT = h;
 
@@ -90,17 +92,16 @@ namespace vmonitor {
 
 		// Check for messages & events
 		while(SDL_PollEvent(&event)) {
+			// should be turned into switch case statement
 			if(event.type == SDL_MOUSEBUTTONUP) {
 				// mouse up
-				m_drawing = false;
-				cout << m_drawing << endl;
+				on_mouse_up();
 			} else if(event.type == SDL_MOUSEBUTTONDOWN && !m_drawing) {
 				// mouse down
-				m_drawing = true;
 				on_mouse_down();
 			} else if(event.type == SDL_MOUSEBUTTONUP) {
 				on_mouse_up();		
-			}else if(event.type == SDL_MOUSEMOTION && m_drawing) {
+			} else if(event.type == SDL_MOUSEMOTION && m_drawing) {
 				on_mouse_drag();
 			} else if(event.type == SDL_QUIT) return false;
 		}
@@ -121,7 +122,7 @@ namespace vmonitor {
 		SDL_RenderPresent(m_renderer); // do the rendering
 	}
 
-	void Screen::close() {
+	void Screen::close() const {
 		// dispose
 		del_arr(m_buffer);
 

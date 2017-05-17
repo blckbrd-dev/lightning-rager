@@ -7,7 +7,7 @@
 namespace vmonitor {
 class VMonitor: public vmonitor::Screen {
 private:
-	mutable int m_mouse_X;
+	mutable int m_mouse_x;
 	mutable int m_mouse_y;
 	sel::State* const m_lua_state;
 	int cell_size;
@@ -20,5 +20,6 @@ private:
 public:
 	VMonitor();
 	~VMonitor();
+	bool init() const;
 };
 }
